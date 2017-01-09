@@ -12,13 +12,12 @@
 % network: trained network
 
 function network = trainNetwork(inputNum,outputNum,learningRate,network,samples)
-  disp('You called function trainNetwork')
+  %disp('You called function trainNetwork')
 
   [~,layers] = size(network);
   layers = layers+1;
   [row,~] = size(samples);
-  %while(1)
-  for cnt = 1:100
+  for cnt = 1:10000
     rightNum = 0;       % num of right result.(样本正确分类的数�?
 
     for i = 1:row

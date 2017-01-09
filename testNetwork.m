@@ -11,7 +11,7 @@
 % errorPercentage: error percentage
 
 function errorPercentage = testNetwork(inputNum,outputNum,network,samples)
-  disp('You called function testNetwork')
+  %disp('You called function testNetwork')
 
   [~,layers] = size(network);
   layers = layers+1;

@@ -12,7 +12,7 @@
 % network: updated network
 
 function network = updateNetwork(originalNetwork,neuronInput,neuronOutput,actual,learningRate)
-  disp('You called function updateNetwork')
+  %disp('You called function updateNetwork')
 
   network = originalNetwork;
 

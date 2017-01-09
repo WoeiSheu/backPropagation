@@ -10,7 +10,7 @@
 % neuronOutput: all neurons' output
 
 function [neuronInput,neuronOutput] = getOutput(network, input)
-  disp('You called function getOutput')
+  %disp('You called function getOutput')
 
   [~,layers] = size(network);
   layers = layers+1;

@@ -8,7 +8,7 @@
 % network: the neural network structure
 
 function network = generateNetwork(neurons)
-  disp('You called function generateNetwork')
+  %disp('You called function generateNetwork')
 
   layers = length(neurons);
   network = cell(1,layers-1);
