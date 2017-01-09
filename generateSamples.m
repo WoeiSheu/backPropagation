@@ -10,7 +10,7 @@
 % samples: samples
 
 function samples = generateSamples(input,output,num)
-  disp("You called function generateSamples")
+  disp('You called function generateSamples')
 
   lower = 1;
   higher = 10001;

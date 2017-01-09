@@ -10,7 +10,7 @@
 % neuronOutput: all neurons' output
 
 function [neuronInput,neuronOutput] = getOutput(network, input)
-  disp("You called function getOutput")
+  disp('You called function getOutput')
 
   [wd,layers] = size(network);
   cur = input;
@@ -20,7 +20,7 @@ function [neuronInput,neuronOutput] = getOutput(network, input)
     w = network{1,i};
     z = cur * w;
     neuronInput{1,i+1} = z;
-    nxt = 1 ./ (1 + exp(-z));   % activiation function(激活函数)
+    nxt = 1 ./ (1 + exp(-z));   % activiation function(�?��函数)
     cur = nxt;
   end
   neuronOutput{1,layers+1} = cur;

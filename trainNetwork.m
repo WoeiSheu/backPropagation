@@ -12,22 +12,24 @@
 % network: trained network
 
 function network = trainNetwork(inputNum,outputNum,learningRate,network,samples)
+  disp('You called function trainNetwork')
+
   [wd,layers] = size(network);
   [row,column] = size(samples);
   while(1)
-    rightNum = 0;       % num of right result.(样本正确分类的数量)
+    rightNum = 0;       % num of right result.(样本正确分类的数�?
 
     for(i = 1:row)
-      input = samples(i:inputNum);
+      input = samples(i,1:inputNum);
       [neuronInput,neuronOutput] = getOutput( network, input );
-      y = neuronOutput{1,layers};
-      actual = samples(inputNum+1:inputNum+outputNum);
+      y = neuronOutput{1,layers+1};
+      actual = samples(i,inputNum+1:inputNum+outputNum);
       outputError = 0.5 * (norm(y - actual)) ^ 2;
 
       network = updateNetwork(network,neuronInput,neuronOutput,actual,learningRate);
 
       if( abs(y - actual) < 0.001 )      % if error between expected result and predicted result of neural network is less than 0.001, we think it right.
-          rightNum += 1;
+          rightNum = rightNum + 1;
       end
     end
 

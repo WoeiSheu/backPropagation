@@ -11,6 +11,8 @@
 % errorPercentage: error percentage
 
 function errorPercentage = testNetwork(inputNum,outputNum,network,testSamples)
+  disp('You called function testNetwork')
+
   [row,column] = size(samples);
   rightNum = 0;
   for(i = 1:row)
