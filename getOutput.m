@@ -12,10 +12,14 @@
 function [neuronInput,neuronOutput] = getOutput(network, input)
   disp('You called function getOutput')
 
-  [wd,layers] = size(network);
+  [~,layers] = size(network);
+  layers = layers+1;
+  neuronInput = cell(1,layers);
+  neuronOutput = cell(1,layers);
+  
   cur = input;
   neuronInput{1,1} = cur;
-  for(i = 1:layers)
+  for i = 1:layers-1
     neuronOutput{1,i} = cur;
     w = network{1,i};
     z = cur * w;
@@ -23,7 +27,7 @@ function [neuronInput,neuronOutput] = getOutput(network, input)
     nxt = 1 ./ (1 + exp(-z));   % activiation function(æ¿?´»å‡½æ•°)
     cur = nxt;
   end
-  neuronOutput{1,layers+1} = cur;
+  neuronOutput{1,layers} = cur;
 
-  [neuronInput,neuronOutput];   % this is output
+  %[neuronInput,neuronOutput];   % this is output
 end

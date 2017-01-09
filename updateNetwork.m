@@ -16,12 +16,12 @@ function network = updateNetwork(originalNetwork,neuronInput,neuronOutput,actual
 
   network = originalNetwork;
 
-  [wd,len] = size(originalNetwork);
-  for(layer = len:-1:1)
+  [~,len] = size(originalNetwork);
+  for layer = len:-1:1
     [row,column] = size(originalNetwork{1,layer});
     tmp = [];
-    for(i = 1:row)      % previous layer neurons' number
-      for(j = 1:column)
+    for i = 1:row      % previous layer neurons' number
+      for j = 1:column
         if(layer == len)    % if it is output layer
           deltaCur = ( neuronOutput{1,layer+1}(j) - actual ) * neuronOutput{1,layer+1}(j) * ( 1 - neuronOutput{1,layer+1}(j) );
         else
@@ -35,5 +35,5 @@ function network = updateNetwork(originalNetwork,neuronInput,neuronOutput,actual
     deltaNxt = tmp;
   end
 
-  network;  % this is output
+  %network;  % this is output
 end

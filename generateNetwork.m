@@ -10,11 +10,11 @@
 function network = generateNetwork(neurons)
   disp('You called function generateNetwork')
 
-  network = {};
   layers = length(neurons);
-  for(i = 1:layers-1)
+  network = cell(1,layers-1);
+  for i = 1:layers-1
     network{1,i} = rand(neurons(i),neurons(i+1));   % initialize network weight with random value
   end
 
-  network;  % this is output
+  %network;  % this is output
 end

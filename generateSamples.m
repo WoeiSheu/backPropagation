@@ -14,15 +14,18 @@ function samples = generateSamples(input,output,num)
 
   lower = 1;
   higher = 10001;
-  for(i = 1:num)
-    for(j = 1:input)
+  samples = zeros(num,input+output);
+  for i = 1:num
+    sampleInput = zeros(1,input);
+    for j = 1:input
       sampleInput(j) = lower + (higher-lower) * rand();
     end
-    for(j = 1:output)
+    sampleOutput = zeros(1,output);
+    for j = 1:output
       sampleOutput(j) = sum( log(sampleInput) ) * ( sin(j)*j );
     end
     samples(i,:) = [sampleInput sampleOutput];
   end
 
-  samples;  % this is output
+  %samples;  % this is output
 end

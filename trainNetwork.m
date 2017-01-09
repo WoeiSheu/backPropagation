@@ -14,17 +14,19 @@
 function network = trainNetwork(inputNum,outputNum,learningRate,network,samples)
   disp('You called function trainNetwork')
 
-  [wd,layers] = size(network);
-  [row,column] = size(samples);
-  while(1)
+  [~,layers] = size(network);
+  layers = layers+1;
+  [row,~] = size(samples);
+  %while(1)
+  for cnt = 1:100
     rightNum = 0;       % num of right result.(样本正确分类的数�?
 
-    for(i = 1:row)
+    for i = 1:row
       input = samples(i,1:inputNum);
       [neuronInput,neuronOutput] = getOutput( network, input );
-      y = neuronOutput{1,layers+1};
+      y = neuronOutput{1,layers};
       actual = samples(i,inputNum+1:inputNum+outputNum);
-      outputError = 0.5 * (norm(y - actual)) ^ 2;
+      %outputError = 0.5 * (norm(y - actual)) ^ 2;
 
       network = updateNetwork(network,neuronInput,neuronOutput,actual,learningRate);
 
@@ -39,5 +41,5 @@ function network = trainNetwork(inputNum,outputNum,learningRate,network,samples)
 
   end
 
-  network;  % this is output
+  %network;  % this is output
 end

@@ -10,19 +10,21 @@
 % return:
 % errorPercentage: error percentage
 
-function errorPercentage = testNetwork(inputNum,outputNum,network,testSamples)
+function errorPercentage = testNetwork(inputNum,outputNum,network,samples)
   disp('You called function testNetwork')
 
-  [row,column] = size(samples);
+  [~,layers] = size(network);
+  layers = layers+1;
+  [row,~] = size(samples);
   rightNum = 0;
-  for(i = 1:row)
-    input = samples(i:inputNum);
-    [neuronInput,neuronOutput] = getOutput( network, input );
-    y = neuronOutput{1,layers+1};
-    actual = samples(inputNum+1:inputNum+outputNum);
+  for i = 1:row
+    input = samples(i,1:inputNum);
+    [~,neuronOutput] = getOutput( network, input );
+    y = neuronOutput{1,layers};
+    actual = samples(i,inputNum+1:inputNum+outputNum);
 
     if( abs(y - actual) < 0.001 )      % if error between expected result and predicted result of neural network is less than 0.001, we think it right.
-      rightNum += 1;
+      rightNum = rightNum+1;
     end
   end
 
