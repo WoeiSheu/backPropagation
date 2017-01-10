@@ -21,8 +21,6 @@ function network = trainNetwork(inputNum,outputNum,learningRate,network,samples,
   layers = layers+1;
   [row,~] = size(samples);
   for cnt = 1:iterationNum
-    rightNum = 0;       % num of right result.(样本正确分类的数�?
-
     errorSum = 0;
     for i = 1:row
       input = samples(i,1:inputNum);
@@ -34,10 +32,6 @@ function network = trainNetwork(inputNum,outputNum,learningRate,network,samples,
       errorSum = errorSum + outputError;
 
       network = updateNetwork(network,neuronInput,neuronOutput,actual,learningRate);
-
-      if( outputError < 0.0001 )
-          rightNum = rightNum + 1;
-      end
     end
 
     trainList(cnt) = sqrt(errorSum) / row;
