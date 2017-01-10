@@ -12,8 +12,8 @@
 function samples = generateSamples(input,output,num)
   %disp('You called function generateSamples')
 
-  lower = 1;
-  higher = 10001;
+  lower = -pi;
+  higher = pi;
   samples = zeros(num,input+output);
   for i = 1:num
     sampleInput = zeros(1,input);
@@ -22,7 +22,7 @@ function samples = generateSamples(input,output,num)
     end
     sampleOutput = zeros(1,output);
     for j = 1:output
-      sampleOutput(j) = sum( sqrt(sampleInput) );
+      sampleOutput(j) = sum(sin(sampleInput));      % y = sin(x1) + sin(x2) + sin(x3)
     end
     samples(i,:) = [sampleInput sampleOutput];
   end

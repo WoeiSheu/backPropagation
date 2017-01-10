@@ -16,7 +16,6 @@ function errorSum = testNetwork(inputNum,outputNum,network,samples)
   [~,layers] = size(network);
   layers = layers+1;
   [row,~] = size(samples);
-  testList = zeros(outputNum,row);
   
   errorSum = 0;
   for i = 1:row
@@ -27,16 +26,6 @@ function errorSum = testNetwork(inputNum,outputNum,network,samples)
 
     outputError = 0.5 * (norm(y - actual))^2;
     errorSum = errorSum + outputError;
-    
-    for j = 1:outputNum
-      testList(j,i) = abs(y(j) - actual(j) / actual(j));
-    end
-  end
-
-  figure(2);
-  for j = 1:outputNum
-    plot(testList(j));
-    hold on;
   end
   
   %errorSum;     % this is output;

@@ -34,7 +34,9 @@ function network = trainNetwork(inputNum,outputNum,learningRate,network,samples,
       network = updateNetwork(network,neuronInput,neuronOutput,actual,learningRate);
     end
 
-    trainList(cnt) = sqrt(errorSum) / row;
+    %trainList(cnt) = sqrt(errorSum);
+    trainList(cnt) = errorSum;
+    cnt,errorSum
     
     if( trainList(cnt) < 0.01 )       % when errorSum < 0.01, stop
       break
