@@ -23,23 +23,26 @@ function network = trainNetwork(inputNum,outputNum,learningRate,network,samples,
   for cnt = 1:iterationNum
     rightNum = 0;       % num of right result.(样本正确分类的数�?
 
+    errorSum = 0;
     for i = 1:row
       input = samples(i,1:inputNum);
       [neuronInput,neuronOutput] = getOutput( network, input );
       y = neuronOutput{1,layers};
       actual = samples(i,inputNum+1:inputNum+outputNum);
-      %outputError = 0.5 * (norm(y - actual)) ^ 2;
+      
+      outputError = 0.5 * (norm(y - actual))^2;
+      errorSum = errorSum + outputError;
 
       network = updateNetwork(network,neuronInput,neuronOutput,actual,learningRate);
 
-      if( abs(y - actual) < 0.001 )      % if error between expected result and predicted result of neural network is less than 0.001, we think it right.
+      if( outputError < 0.0001 )
           rightNum = rightNum + 1;
       end
     end
 
-    trainList(cnt) = (row-rightNum)/row;
+    trainList(cnt) = sqrt(errorSum) / row;
     
-    if( rightNum / row > 0.99 )       % when 99% of training samples get right results, stop
+    if( trainList(cnt) < 0.01 )       % when errorSum < 0.01, stop
       break
     end
   end
