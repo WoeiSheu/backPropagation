@@ -3,7 +3,7 @@
 %
 
 inputNum = 2;
-hiddenNum = 5;
+hiddenNum = [3,3];
 outputNum = 1;
 sampleNum = 1000;
 learningRate = 0.1;
