@@ -6,7 +6,7 @@ inputNum = 2;
 hiddenNum = [3,3];
 outputNum = 1;
 sampleNum = 1000;
-learningRate = 0.1;
+learningRate = 0.02;
 iterationNum = 100;
 
 network = generateNetwork([inputNum,hiddenNum,outputNum]);
