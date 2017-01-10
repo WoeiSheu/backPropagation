@@ -23,7 +23,8 @@ function network = updateNetwork(originalNetwork,neuronInput,neuronOutput,actual
     for j = 1:column
       o = neuronOutput{1,layer}(j);
       if(layer == len+1)    % if it is output layer
-        deltaCur(j) = ( o - actual(j) ) * o * ( 1 - o );
+        %deltaCur(j) = ( o - actual(j) ) * o * ( 1 - o );
+        deltaCur(j) = ( o - actual(j) );
       else
         deltaCur(j) = deltaNxt*originalNetwork{1,layer}(j,:)' * o * ( 1 - o );
       end

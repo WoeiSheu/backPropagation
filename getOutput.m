@@ -24,10 +24,11 @@ function [neuronInput,neuronOutput] = getOutput(network, input)
     w = network{1,i};
     z = cur * w;
     neuronInput{1,i+1} = z;
-    nxt = 1 ./ (1 + exp(-z));   % activiation function(æ¿?´»å‡½æ•°)
+    nxt = 1 ./ (1 + exp(-z));   % activiation function
     cur = nxt;
   end
-  neuronOutput{1,layers} = cur;
-
+  %neuronOutput{1,layers} = cur;
+  neuronOutput{1,layers} = neuronInput{1,layers};
+  
   %[neuronInput,neuronOutput];   % this is output
 end
