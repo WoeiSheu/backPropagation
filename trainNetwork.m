@@ -41,6 +41,7 @@ function network = trainNetwork(inputNum,outputNum,learningRate,network,samples,
     end
   end
 
+  figure(1);
   plot(trainList);
   %network;  % this is output
 end

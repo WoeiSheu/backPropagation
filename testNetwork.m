@@ -28,9 +28,10 @@ function errorSum = testNetwork(inputNum,outputNum,network,samples)
     outputError = 0.5 * (norm(y - actual))^2;
     errorSum = errorSum + outputError;
     
-    testList(i) = abs(y - actual) / actual;
+    testList(i) = abs(y - actual / actual);
   end
 
+  figure(2);
   plot(testList);
   
   %errorSum;     % this is output;

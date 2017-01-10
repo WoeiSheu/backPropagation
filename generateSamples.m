@@ -22,7 +22,7 @@ function samples = generateSamples(input,output,num)
     end
     sampleOutput = zeros(1,output);
     for j = 1:output
-      sampleOutput(j) = sum( sin(sampleInput) );
+      sampleOutput(j) = sum( sqrt(sampleInput) );
     end
     samples(i,:) = [sampleInput sampleOutput];
   end

@@ -16,5 +16,5 @@ network = trainNetwork(inputNum,outputNum,learningRate,network,trainSamples,iter
 
 sampleNum = 10;
 testSamples = generateSamples(inputNum,outputNum,sampleNum);
-errorPercentage = testNetwork(inputNum,outputNum,network,testSamples);
-disp(errorPercentage)
+errorSum = testNetwork(inputNum,outputNum,network,testSamples);
+disp(errorSum)
