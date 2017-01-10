@@ -10,7 +10,7 @@
 % return:
 % errorPercentage: error percentage
 
-function errorSum = testNetwork(inputNum,outputNum,network,samples)
+function [errorSum,testList] = testNetwork(inputNum,outputNum,network,samples)
   %disp('You called function testNetwork')
   
   [~,layers] = size(network);
@@ -18,6 +18,8 @@ function errorSum = testNetwork(inputNum,outputNum,network,samples)
   [row,~] = size(samples);
   
   errorSum = 0;
+  testList = zeros(1,row);
+  
   for i = 1:row
     input = samples(i,1:inputNum);
     [~,neuronOutput] = getOutput( network, input );
@@ -26,6 +28,8 @@ function errorSum = testNetwork(inputNum,outputNum,network,samples)
 
     outputError = 0.5 * (norm(y - actual))^2;
     errorSum = errorSum + outputError;
+    
+    testList(i) = sum( abs( (y - actual)./actual ) ) / outputNum;
   end
   
   %errorSum;     % this is output;

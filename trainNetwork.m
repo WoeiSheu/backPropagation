@@ -14,8 +14,11 @@
 
 function network = trainNetwork(inputNum,outputNum,learningRate,network,samples,iterationNum)
   %disp('You called function trainNetwork')
+  sampleNum = 1000;
+  testSamples = generateSamples(inputNum,outputNum,sampleNum);
   
   trainList = zeros(1,iterationNum);
+  testList = zeros(1,iterationNum);
   
   [~,layers] = size(network);
   layers = layers+1;
@@ -38,12 +41,19 @@ function network = trainNetwork(inputNum,outputNum,learningRate,network,samples,
     trainList(cnt) = errorSum;
     cnt,errorSum
     
-    if( trainList(cnt) < 0.01 )       % when errorSum < 0.01, stop
+    [testErrorSum,~] = testNetwork(inputNum,outputNum,network,testSamples);
+    testErrorSum
+    testList(cnt) = testErrorSum;
+    
+    if( errorSum < 1 )       % when errorSum < 1, stop
       break
     end
   end
 
   figure(1);
+  subplot(2,1,1);
   plot(trainList);
+  hold on;
+  plot(testList);
   %network;  % this is output
 end
