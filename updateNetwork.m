@@ -17,23 +17,25 @@ function network = updateNetwork(originalNetwork,neuronInput,neuronOutput,actual
   network = originalNetwork;
 
   [~,len] = size(originalNetwork);
-  for layer = len:-1:1
-    [row,column] = size(originalNetwork{1,layer});
-    tmp = [];
-    for i = 1:row      % previous layer neurons' number
-      for j = 1:column
-        o = neuronOutput{1,layer+1}(j);
-        if(layer == len)    % if it is output layer
-          deltaCur = ( o - actual ) * o * ( 1 - o );
-        else
-          deltaCur = deltaNxt(j,:)*originalNetwork{1,layer+1}(j,:)' * o * ( 1 - o );
-        end
-        tmp(i,j) = deltaCur;
-        deltaW = -learningRate * deltaCur * neuronOutput{1,layer}(i);
-        network{1,layer}(i,j) = network{1,layer}(i,j) + deltaW;
+  for layer = len+1:-1:2
+    [row,column] = size(originalNetwork{1,layer-1});
+    deltaCur = [];
+    for j = 1:column
+      o = neuronOutput{1,layer}(j);
+      if(layer == len+1)    % if it is output layer
+        deltaCur(j) = ( o - actual(j) ) * o * ( 1 - o );
+      else
+        deltaCur(j) = deltaNxt*originalNetwork{1,layer}(j,:)' * o * ( 1 - o );
       end
     end
-    deltaNxt = tmp;
+    deltaNxt = deltaCur;
+    
+    for i = 1:row      % previous layer neurons' number
+      for j = 1:column
+        deltaW = -learningRate * deltaCur(j) * neuronOutput{1,layer-1}(i);
+        network{1,layer-1}(i,j) = network{1,layer-1}(i,j) + deltaW;
+      end
+    end
   end
 
   %network;  % this is output
