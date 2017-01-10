@@ -21,3 +21,7 @@ do
 until all examples classified correctly or another stopping criterion satisfied
 return the network
 ```
+
+### Reference
+<http://www.cnblogs.com/liuwu265/p/4696388.html>
+<http://web.stanford.edu/class/cs294a/sparseAutoencoder_2011new.pdf>

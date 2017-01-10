@@ -45,15 +45,15 @@ function network = trainNetwork(inputNum,outputNum,learningRate,network,samples,
     testErrorSum
     testList(cnt) = testErrorSum;
     
-    if( errorSum < 1 )       % when errorSum < 1, stop
+    if( errorSum < 0.1 )       % when errorSum < 1, stop
       break
     end
   end
 
   figure(1);
   subplot(2,1,1);
-  plot(trainList);
+  plot(trainList,'r');
   hold on;
-  plot(testList);
+  plot(testList,'b');
   %network;  % this is output
 end
