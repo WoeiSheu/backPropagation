@@ -5,15 +5,15 @@
 % input: input num
 % output: output num
 % num: sample num
+% lower: lower bound of input
+% higher: higher bound of input
 %
 % return:
 % samples: samples
 
-function samples = generateSamples(input,output,num)
+function samples = generateSamples(input,output,num,lower,higher)
   %disp('You called function generateSamples')
 
-  lower = 2;
-  higher = 10;
   samples = zeros(num,input+output);
   for i = 1:num
     sampleInput = zeros(1,input);
@@ -22,7 +22,7 @@ function samples = generateSamples(input,output,num)
     end
     sampleOutput = zeros(1,output);
     for j = 1:output
-      sampleOutput(j) = sum(log(sampleInput));      % y = sin(x1) + sin(x2) + sin(x3)
+      sampleOutput(j) = sum(log(sampleInput));      % y = log(x1) + log(x2) + log(x3)
     end
     samples(i,:) = [sampleInput sampleOutput];
   end

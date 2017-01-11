@@ -8,15 +8,14 @@
 % network: network structure
 % samples: samples
 % iterationNum: max iteration numer
+% testSamples: test samples
 %
 % return:
 % network: trained network
 
-function network = trainNetwork(inputNum,outputNum,learningRate,network,samples,iterationNum)
+function network = trainNetwork(inputNum,outputNum,learningRate,network,samples,iterationNum,testSamples)
   %disp('You called function trainNetwork')
-  sampleNum = 1000;
-  testSamples = generateSamples(inputNum,outputNum,sampleNum);
-  
+
   trainList = zeros(1,iterationNum);
   testList = zeros(1,iterationNum);
   
@@ -50,7 +49,6 @@ function network = trainNetwork(inputNum,outputNum,learningRate,network,samples,
     end
   end
 
-  figure(1);
   subplot(2,1,1);
   plot(trainList,'r');
   hold on;

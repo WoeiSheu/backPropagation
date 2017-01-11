@@ -5,17 +5,22 @@
 inputNum = 2;
 hiddenNum = 36;
 outputNum = 1;
-sampleNum = 2000;
 learningRate = 0.01;
-iterationNum = 1000;
+iterationNum = 2;
 
+lower = 2;
+higher = 10;
+sampleNum = 2000;
+trainSamples = generateSamples(inputNum,outputNum,sampleNum,lower,higher);
+sampleNum = 1000;
+testSamples = generateSamples(inputNum,outputNum,sampleNum,lower,higher);
+
+figure(1);
 network = generateNetwork([inputNum,hiddenNum,outputNum]);
-trainSamples = generateSamples(inputNum,outputNum,sampleNum);
-
-network = trainNetwork(inputNum,outputNum,learningRate,network,trainSamples,iterationNum);    % train
+network = trainNetwork(inputNum,outputNum,learningRate,network,trainSamples,iterationNum,testSamples);    % train
 
 sampleNum = 1000;
-testSamples = generateSamples(inputNum,outputNum,sampleNum);
+testSamples = generateSamples(inputNum,outputNum,sampleNum,lower,higher);
 [errorSum,testList] = testNetwork(inputNum,outputNum,network,testSamples);
 disp(errorSum)
 
