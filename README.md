@@ -27,7 +27,7 @@ return the network
 <http://web.stanford.edu/class/cs294a/sparseAutoencoder_2011new.pdf>
 
 ### Test
-1. y = sin(x1) + sin(x2) + sin(x3) + ... 
+1. test1.fig. y = sin(x1) + sin(x2) + sin(x3) + ... 
    ```
    inputNum = 2;
    hiddenNum = 36;
