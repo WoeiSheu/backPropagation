@@ -25,3 +25,15 @@ return the network
 ### Reference
 <http://www.cnblogs.com/liuwu265/p/4696388.html>
 <http://web.stanford.edu/class/cs294a/sparseAutoencoder_2011new.pdf>
+
+### Test
+1. y = sin(x1) + sin(x2) + sin(x3) + ... 
+   ```
+   inputNum = 2;
+   hiddenNum = 36;
+   outputNum = 1;
+   sampleNum = 2000;
+   learningRate = 0.01;
+   iterationNum = 1000;
+   ```
+2. y = log(x1 + x2 + x3 + ...)
