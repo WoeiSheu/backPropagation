@@ -39,10 +39,10 @@ function network = trainNetwork(inputNum,outputNum,learningRate,network,samples,
 
     %trainList(cnt) = sqrt(errorSum);
     trainList(cnt) = errorSum;
-    cnt,errorSum
+    fprintf('Count: %d; SSE: %f\n',cnt,errorSum);
     
     [testErrorSum,~] = testNetwork(inputNum,outputNum,network,testSamples);
-    testErrorSum
+    fprintf('Test SSE: %f\n',testErrorSum);
     testList(cnt) = testErrorSum;
     
     if( errorSum < 0.1 )       % when errorSum < 1, stop
