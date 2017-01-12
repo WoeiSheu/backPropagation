@@ -23,8 +23,8 @@ return the network
 ```
 
 ### Reference
-<http://www.cnblogs.com/liuwu265/p/4696388.html>
-<http://web.stanford.edu/class/cs294a/sparseAutoencoder_2011new.pdf>
++ <http://www.cnblogs.com/liuwu265/p/4696388.html>
++ <http://web.stanford.edu/class/cs294a/sparseAutoencoder_2011new.pdf>
 
 ### Test
 1. test1.fig. y = sin(x1) + sin(x2) + sin(x3) + ... 
