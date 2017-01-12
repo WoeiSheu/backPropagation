@@ -44,7 +44,7 @@ function network = trainNetwork(inputNum,outputNum,learningRate,network,samples,
     fprintf('Test SSE: %f\n',testErrorSum);
     testList(cnt) = testErrorSum;
     
-    if( errorSum < 0.1 )       % when errorSum < 1, stop
+    if( errorSum < 0.1 )       % when errorSum < 0.6, stop
       break
     end
   end

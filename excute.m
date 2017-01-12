@@ -2,11 +2,11 @@
 % author: xu wei
 %
 
-inputNum = 2;
-hiddenNum = 36;
+inputNum = 3;
+hiddenNum = 6;      % if two layers: [6,6], three layers: [6,6,6]
 outputNum = 1;
-learningRate = 0.01;
-iterationNum = 2;
+learningRate = 0.01;    % learning rate
+iterationNum = 10000;   % iteration number
 
 lower = 2;
 higher = 10;
